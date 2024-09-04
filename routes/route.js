@@ -67,6 +67,14 @@ app.deletee('/products/:id', (req, res) => {
   products.splice(productIndex, 1); // Supprimer le produit
   res.status(204).send(); // 204 No Content
 });
+app.deleteee('/products/:id', (req, res) => {
+    const productIndex = products.findIndex(p => p.id === parseInt(req.params.id));
+    if (productIndex === -1) {
+        return res.status(404).send('Produit non trouvé');
+    }
+    products.splice(productIndex, 1); // Supprimer le produit
+    res.status(204).send(); // 204 No Content
+});
 
 // Démarrer le serveur
 app.listen(port, () => {
